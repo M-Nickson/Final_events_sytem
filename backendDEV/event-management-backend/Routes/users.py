@@ -71,3 +71,10 @@ def login():
         return jsonify({'message': 'Invalid credentials'}), 401
     return jsonify({'message': 'Login successful'}), 200
 
+@users_bp.route("/update_user/<int:id>", methods=["PUT"])
+@jwt_required()
+def update_user():
+    id = User.query.get(id)
+    if not id:
+        return jsonify({"message": "User not found."}), 404
+    return id

@@ -275,3 +275,21 @@ document.addEventListener("DOMContentLoaded", function() {
       })
       .catch(error => console.error('Error fetching users:', error));
 });
+
+async function user(userId) {
+  if (confirm("Are you sure you want to update this user?")) {
+    try {
+      const data = await fetchData(`${API_BASE_URL}/users/${userId}`, {
+        method: "DELETE",
+      });
+
+     // alert(data.message);
+      displayAllUsers(); // Refresh the user list
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  
+}
+
+
